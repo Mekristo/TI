@@ -1,13 +1,12 @@
 body {
   background-color: #FF5A5A;
   height: 100%;
-  font-family: 'tradegothiclt-bold', sans-serif;
+  font-family: 'Baloo 2', cursive;
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 12em;
   color: white;
-  text-transform: uppercase;
 }
 
 span {
