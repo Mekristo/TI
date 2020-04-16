@@ -1,14 +1,13 @@
 body {
   background-color: #FF5A5A;
   height: 100%;
-  font-family: 'Baloo 2', cursive;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
   font-size: 12em;
   color: white;
 }
-
 /*span {
   border-right: .05em solid;
   animation: caret 1s steps(1) infinite;
