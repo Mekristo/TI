@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 <title>Projekt TI gra edukacyjna A.Pusz D.Rajchel</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,19 +24,23 @@ body{
 #main {margin-left: 120px}
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+
+
 </style>
+</head>
+
 <body class="w3-black">
 
     <script src="sample.js"></script>
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Znak_graficzny_AGH.svg" style="width:100%">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-light-grey">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Znak_graficzny_AGH.svg" style="width:100%" href="https://www.agh.edu.pl/">
+  <a class="w3-bar-item w3-button w3-padding-large w3-light-grey">
     <i class="fa fa-home w3-xxlarge"></i>
     <p>Home</p>
   </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a class="w3-bar-item w3-button w3-padding-large w3-hover-grey" id="myBtn">
     <i class="fa fa-user w3-xxlarge"></i>
     <p>O projekcie</p>
   </a>
@@ -43,7 +48,7 @@ body{
     <i class="fa fa-eye w3-xxlarge"></i>
     <p>PHOTOS</p>
   </a> -->
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a class="w3-bar-item w3-button w3-padding-large w3-hover-grey" id="myBtn1">
     <i class="fa fa-envelope w3-xxlarge"></i>
     <p>Kontakt</p>
   </a>
@@ -52,12 +57,32 @@ body{
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">Home</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">O projekcie</a>
+    <a class="w3-bar-item w3-button" style="width:25% !important">Home</a>
+    <a class="w3-bar-item w3-button" style="width:25% !important" id="myBtn">O projekcie</a>
 
-    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">Kontakt</a>
+    <a class="w3-bar-item w3-button" style="width:25% !important" id="myBtn1">Kontakt</a>
   </div>
 </div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Projekt stworzyły dwie studentki z kierunku Informatyka i Ekonometria.<br> Celem projektu jest stworzenie strony internetowej która wypisuje pismem odręcznym maszynowe polecenia 
+	oraz je wymawia.<br>Strona stworzona głównie z myślą o dzieciach, aby nauczyć je mówić czytać i pisać.</p>
+  </div>
+</div>
+<div id="myModal1" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Adrianna Pusz email: adrianna.pusz@gmali.com<br> Dominika Rajchel email:dominikarajchel@interia.pl</p>
+  </div>
+</div>
+
+
+
 
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
@@ -68,9 +93,64 @@ body{
     <img src="https://twenty75.com/wp-content/uploads/2018/03/bighairybruisedhill-BLUR.jpg" alt="boy" class="w3-image" width="992" height="1108">
   </header> -->
 
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    
+    <script>
+    // Get the modal
+    var modal1 = document.getElementById("myModal1");
+    
+    // Get the button that opens the modal
+    var btn1 = document.getElementById("myBtn1");
+    
+    // Get the <span> element that closes the modal
+    var span1 = document.getElementsByClassName("close")[1];
+    
+    // When the user clicks the button, open the modal 
+    btn1.onclick = function() {
+      modal1.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span1.onclick = function() {
+      modal1.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal1) {
+        modal1.style.display = "none";
+      }
+    }
+    </script>
 
 
-  <!-- Contact Section -->
+  <!-- Main Section -->
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
     <h1 class="w3-text-light-grey">Cześć! Bonjour!</h1>
     <hr style="width:200px" class="w3-opacity">
@@ -85,16 +165,13 @@ body{
         </button>
       </p>
     </form>
-  <!-- End Contact Section -->
+  <!-- End Main Section -->
   </div>
   
     <!-- Footer -->
   <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-medium">Projekt na przedmiot TI <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">Dominika Rajchel i Adrianna Pusz</a></p>
+
+    <p class="w3-medium">Projekt na przedmiot TI w roku akademickim 2019/2020 </br> Wykonany przez: Adrianna Pusz i Dominika Rajchel </p>
   <!-- End footer -->
   </footer>
 
