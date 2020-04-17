@@ -1,13 +1,26 @@
-body {
-  background-color: #FF5A5A;
+body{
+  background-image: url('https://twenty75.com/wp-content/uploads/2018/03/bighairybruisedhill-BLUR.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-}
+} 
 
 h1 {
+  font-family: 'Sacramento', cursive;
   font-size: 12em;
   color: white;
 }
+
+
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: transparent;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
 /*span {
   border-right: .05em solid;
   animation: caret 1s steps(1) infinite;
