@@ -1,80 +1,98 @@
- 
- 
- // Get the modal
- var modal = document.getElementById("myModal");
-    
- // Get the button that opens the modal
- var btn = document.getElementById("myBtn");
- 
- // Get the <span> element that closes the modal
- var span = document.getElementsByClassName("close")[0];
- 
- // When the user clicks the button, open the modal 
- btn.onclick = function() {
-   modal.style.display = "block";
- }
- 
- // When the user clicks on <span> (x), close the modal
- span.onclick = function() {
-   modal.style.display = "none";
- }
- 
- // When the user clicks anywhere outside of the modal, close it
- window.onclick = function(event) {
-   if (event.target == modal) {
-     modal.style.display = "none";
-   }
- }
+// Get the modal
+let modal = document.getElementById("myModal");
 
- // Get the modal 2
- var modal1 = document.getElementById("myModal1");
-    
- // Get the button that opens the modal
- var btn1 = document.getElementById("myBtn1");
- 
- // Get the <span> element that closes the modal
- var span1 = document.getElementsByClassName("close")[1];
- 
- // When the user clicks the button, open the modal 
- btn1.onclick = function() {
-   modal1.style.display = "block";
- }
- 
- // When the user clicks on <span> (x), close the modal
- span1.onclick = function() {
-   modal1.style.display = "none";
- }
- 
- // When the user clicks anywhere outside of the modal, close it
- window.onclick = function(event) {
-   if (event.target == modal1) {
-     modal1.style.display = "none";
-   }
- }
+// Get the button that opens the modal
+let btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+// Get the modal 2
+let modal1 = document.getElementById("myModal1");
+
+// Get the button that opens the modal
+let btn1 = document.getElementById("myBtn1");
+
+// Get the <span> element that closes the modal
+let span1 = document.getElementsByClassName("close")[1];
+
+// When the user clicks the button, open the modal
+btn1.onclick = function () {
+  modal1.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function () {
+  modal1.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+};
 //Grab the input value
- let input_area = document.querySelector("#userinput");
- console.log(input_area);
+let input_area = document.querySelector("#userinput");
 
- let button_zastosuj = document.querySelector("#userbutton");
 
- let dynamic_heading = document.querySelector("#heading");
+let button_zastosuj = document.querySelector("#userbutton");
 
- //display input value as HTML
- updateText = function(){
-     let textNode = input_area.value;
-     dynamic_heading.innerHTML=textNode; 
-     return textNode; //wywoływanie metody odwołującej się do obiektu HTML
-     }
+let dynamic_heading = document.querySelector("#heading");
 
- button_zastosuj.addEventListener("click", updateText);
+//display input value as animated text
+animateText = function () {
+  event.preventDefault();
+  dynamic_heading.textContent = "";
+  let textNode = input_area.value.split("");
+  
+  console.log(textNode);
+  for (let i = 0; i < textNode.length; i++) {
+    dynamic_heading.innerHTML += `<span class="letterSpan">${textNode[i]}</span>`
+  }
 
- // gsap animation
- let animate = function(updateText) {
-    
-    let textSplit = SplitText.create(updateText, { type: "chars,words" });
-    return gsap.from(textSplit.chars, { duration:0.1, visibility:"hidden", stagger: 0.1 } );
-  };
+  let char = 0;
+  let timer = setInterval(onTick, 50);
 
-let button_animation = document.querySelector("#userbutton");
-button_animation.addEventListener("click", animate);
+  function onTick() {
+    const span = dynamic_heading.querySelectorAll('span')[char];
+    span.classList.add('fade');
+    char++
+
+    if (char === textNode.length) {
+      complete();
+      return
+    }
+  }
+
+  function complete() {
+    clearInterval(timer);
+    timer = null;
+  }
+  
+};
+
+button_zastosuj.addEventListener("click", animateText);
+
+
+
+
+
 
