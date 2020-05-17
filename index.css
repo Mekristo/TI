@@ -18,22 +18,13 @@ h1 {
 /* Set the width of the sidebar to 120px */
 .w3-sidebar {width: 120px;background: transparent;}
 /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-/*span {
-  border-right: .05em solid;
-  animation: caret 1s steps(1) infinite;
-}*/
+#main {margin-left: 120px;}
 
 @keyframes caret {
   50% {
     border-color: transparent;
   }
 }
-/*body {font-family:'Baloo 2', cursive;
-color:black;}
-/* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

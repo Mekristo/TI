@@ -82,12 +82,51 @@ animateText = function () {
     }
   }
 
+  if(window.speechSynthesis.getVoices().length == 0) {
+    window.speechSynthesis.addEventListener('voiceschanged', function() {
+      textToSpeech();
+    });
+  }
+  else {
+    // languages list available
+    textToSpeech()
+  }
+  
+  function textToSpeech() {
+    // get all voices that browser offers
+    var available_voices = window.speechSynthesis.getVoices();
+  
+    // this will hold an voice
+    var polish_voice = '';
+  
+    // find voice by language locale "en-US"
+    // if not then select the first voice
+    for(var i=0; i<available_voices.length; i++) {
+      if(available_voices[i].lang === 'pl-PL') {
+        polish_voice = available_voices[i];
+        break;
+      }
+    }
+    if(polish_voice === '')
+      polish_voice = available_voices[0];
+  
+    // new SpeechSynthesisUtterance object
+    var utter = new SpeechSynthesisUtterance();
+    utter.rate = 0.9;
+    utter.pitch = 0.5;
+    utter.text = input_area.value;
+    utter.voice = polish_voice;
+
+    // speak
+    window.speechSynthesis.speak(utter);
+  }
+
   function complete() {
     clearInterval(timer);
     timer = null;
   }
-  
 };
+
 
 button_zastosuj.addEventListener("click", animateText);
 
